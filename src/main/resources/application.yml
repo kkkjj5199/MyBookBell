@@ -9,7 +9,7 @@ spring:
     view:
       suffix: .html
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/jpashop
+    url: jdbc:mysql://127.0.0.1:3306/bookbell
     username: root
     password: 5199
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -21,6 +21,15 @@ spring:
       hibernate:
         show_sql: true
         format_sql: true
+        default_batch_fetch_size: 100
+  h2:
+    console:
+      enabled: false
+  sql:
+    init:
+      mode: always
+
+
   devtools:
     livereload:
       enabled: true
