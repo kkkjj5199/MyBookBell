@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
@@ -19,10 +20,13 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 public abstract class BaseEntity {
 
+
+
     @CreatedDate
-    @Column(updatable = false,insertable = false)
+    @Column(updatable = false)
     private LocalDateTime create_date;
 
-    @Column(updatable = true,insertable = false)
+
+    @Column()
     private LocalDateTime update_date;
 }
