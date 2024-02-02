@@ -50,7 +50,7 @@ class JPARepositoryTest {
 
 
         //when
-        Books books = booksRepository.save(Books.of("사람들이 날 찾았니","양수산","서해문집","호계도서관",(long)250, LocalDate.ofEpochDay(2010-01-01),"9791192988108", "Y"));
+        Books books = booksRepository.save(Books.of("사람들이 날 찾았니","양수산","서해문집",(long)250, LocalDate.ofEpochDay(2010-01-01),"9791192988108", "Y"));
         //then
 
         assertThat(booksRepository.count()).isEqualTo(previousCount+1);

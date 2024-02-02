@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.ToString;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @Table
@@ -11,7 +14,7 @@ import lombok.ToString;
 public class User extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "USER_ID", nullable = false)
     private Long id;
 
     @Column(nullable = false)
@@ -24,6 +27,10 @@ public class User extends BaseEntity{
     private String address;
 
     private String email;
+
+    @OneToMany
+    @JoinColumn(name = "USER_ID")
+    private List<Orders> ordersList = new ArrayList<>();
 
     protected User() {
     }

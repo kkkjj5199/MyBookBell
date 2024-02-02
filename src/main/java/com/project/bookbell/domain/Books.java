@@ -37,7 +37,7 @@ public class Books extends BaseEntity{
     @Column(nullable = false)
     private String author;
     private String company;
-    private String library;
+
     private Long pages;
     private LocalDate published_date;
     private String ISBN;
@@ -46,25 +46,33 @@ public class Books extends BaseEntity{
 
     private String status;
 
+    @ManyToOne
+    @JoinColumn(name = "ORDER_ID", insertable = false, updatable = false)
+    private Orders orders;
+
+
+
+
+
 
 
     protected Books(){
 
     }
 
-    private Books(String title, String author, String company, String library, Long pages, LocalDate published_date, String ISBN, String status) {
+    private Books(String title, String author, String company, Long pages, LocalDate published_date, String ISBN, String status) {
         this.title = title;
         this.author = author;
         this.company = company;
-        this.library = library;
+
         this.pages = pages;
         this.published_date = published_date;
         this.ISBN = ISBN;
         this.status = status;
     }
 
-    public static Books of(String title, String author, String company, String library, Long pages, LocalDate published_date, String ISBN, String status) {
-        return new Books(title,author,company,library,pages,published_date,ISBN,status);
+    public static Books of(String title, String author, String company, Long pages, LocalDate published_date, String ISBN, String status) {
+        return new Books(title,author,company,pages,published_date,ISBN,status);
     }
 
 
