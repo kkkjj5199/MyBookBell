@@ -5,6 +5,12 @@ logging:
     org.hibernate.type: trace
 
 spring:
+  thymeleaf:
+    suffix: .html
+    cache: false
+    prefix: classpath:templates/
+
+
   mvc:
     view:
       suffix: .html
@@ -28,6 +34,7 @@ spring:
   data.rest:
      base-path: /api
      detection-strategy: annotated
+
 ---
 spring:
   h2:
@@ -41,10 +48,7 @@ spring:
   devtools:
     livereload:
       enabled: true
-  #  thymeleaf:
-  #    suffix: .html
-  #    cache: false
-  #    prefix: classpath:templates/
+
   web:
     resources:
       static-locations: classpath:templates/

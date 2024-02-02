@@ -44,13 +44,15 @@ public class Books extends BaseEntity{
 
     private String coverImageUrl;
 
+    private String status;
+
 
 
     protected Books(){
 
     }
 
-    private Books(String title, String author, String company, String library, Long pages, LocalDate published_date, String ISBN) {
+    private Books(String title, String author, String company, String library, Long pages, LocalDate published_date, String ISBN, String status) {
         this.title = title;
         this.author = author;
         this.company = company;
@@ -58,10 +60,11 @@ public class Books extends BaseEntity{
         this.pages = pages;
         this.published_date = published_date;
         this.ISBN = ISBN;
+        this.status = status;
     }
 
-    public static Books of(String title, String author, String company, String library, Long pages, LocalDate published_date, String ISBN) {
-        return new Books(title,author,company,library,pages,published_date,ISBN);
+    public static Books of(String title, String author, String company, String library, Long pages, LocalDate published_date, String ISBN, String status) {
+        return new Books(title,author,company,library,pages,published_date,ISBN,status);
     }
 
 
