@@ -11,7 +11,7 @@ import java.util.List;
 @Getter
 @Table
 @ToString
-public class User extends BaseEntity{
+public class UserAccount extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "USER_ID", nullable = false)
@@ -28,14 +28,10 @@ public class User extends BaseEntity{
 
     private String email;
 
-    @OneToMany
-    @JoinColumn(name = "USER_ID")
-    private List<Orders> ordersList = new ArrayList<>();
-
-    protected User() {
+    protected UserAccount() {
     }
 
-    private User(String name, String phone_number, String address, String email) {
+    private UserAccount(String name, String phone_number, String address, String email) {
         this.name = name;
         this.phone_number = phone_number;
         this.address = address;
@@ -43,8 +39,8 @@ public class User extends BaseEntity{
     }
 
 
-    public static  User of(String name, String phone_number, String address, String email) {
-        return new User(name,phone_number,address,email);
+    public static UserAccount of(String name, String phone_number, String address, String email) {
+        return new UserAccount(name,phone_number,address,email);
     }
 
 

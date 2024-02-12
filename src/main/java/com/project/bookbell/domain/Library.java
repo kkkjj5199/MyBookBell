@@ -4,27 +4,22 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.ToString;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @ToString
-@Entity
 @Table
-public class Orders extends BaseEntity{
-
+@Entity
+public class Library extends BaseEntity{
     @Id
+    @Column(name = "LIBRARY_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ORDER_ID", nullable = false)
     private Long id;
 
+    private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "userAccount",insertable = false,updatable = false)
-    private UserAccount userAccount;
-
-
+    private String code;
 
 
 }

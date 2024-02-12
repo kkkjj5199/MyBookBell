@@ -2,15 +2,12 @@ package com.project.bookbell.domain;
 
 
 import jakarta.persistence.*;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import java.awt.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Getter
@@ -46,13 +43,11 @@ public class Books extends BaseEntity{
 
     private String status;
 
-    @ManyToOne
-    @JoinColumn(name = "ORDER_ID", insertable = false, updatable = false)
-    private Orders orders;
+    private Long stock;
 
-
-
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "LIBRARY_ID")
+    private Library library;
 
 
 
@@ -64,11 +59,11 @@ public class Books extends BaseEntity{
         this.title = title;
         this.author = author;
         this.company = company;
-
         this.pages = pages;
         this.published_date = published_date;
         this.ISBN = ISBN;
         this.status = status;
+
     }
 
     public static Books of(String title, String author, String company, Long pages, LocalDate published_date, String ISBN, String status) {

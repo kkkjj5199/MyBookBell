@@ -19,6 +19,7 @@ public interface BooksRepository extends
     {
 
 
+
         @Override
         default void customize(QuerydslBindings bindings, QBooks root){
             bindings.excludeUnlistedProperties(true); // 모든필드 검색 제외하기 - true
