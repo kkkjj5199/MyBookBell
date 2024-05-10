@@ -3,16 +3,22 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
   <title>책 리스트 페이지</title>
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+
+
+
+
   <link href="/css/search-bar.css" rel="stylesheet">
   <link href="/css/table.css" rel="stylesheet">
 </head>
 
 
 <body>
-<header th:replace="header :: #mainheader">
+<header th:replace="books/header :: #mainheader">
 </header>
 <br><br>
 
@@ -30,7 +36,8 @@
 <!--              <h4 class="box-title mt-5">제목</h4>-->
 <!--              <p>Lorem Ipsum available,but the majority have suffered alteration in some form,by injected humour,or randomised words which don't look even slightly believable.but the majority have suffered alteration in some form,by injected humour</p>-->
               <h2 class="mt-5">
-                제목 <small class="text-success">작가  </small> <small class="text-warning"> 출판사</small>
+                <h5
+                  <small class="text-success">작가  </small> <small class="text-warning"> 출판사</small>
               </h2>
 
               <h3 class="box-title mt-5">Info</h3>
@@ -41,16 +48,18 @@
                   <table class="table table-striped table-product">
                     <tbody>
                     <tr>
-                      <td width="390">등록번호</td>
-                      <td>1234545</td>
+
+                      <td >도서 번호</td>
+                      <td th:text="${books.id()}"></td>
                     </tr>
                     <tr>
                       <td>ISBN</td>
-                      <td>Knock Down</td>
+                      <td>Kn</td>
                     </tr>
                     <tr>
                       <td>책상태</td>
-                      <td>Yes</td>
+
+                      <td th:if="${#strings.equals(books.status(), 'Y')}" th:text="대출 가능"></td>
                     </tr>
                     <tr>
                       <td>청구기호</td>
@@ -102,7 +111,7 @@
   </main>
 
 
-  <footer  th:replace="footer :: #mainfooter"></footer>
+  <footer  th:replace="books/footer :: #mainfooter"></footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 

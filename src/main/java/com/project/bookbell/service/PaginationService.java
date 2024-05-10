@@ -1,5 +1,6 @@
 package com.project.bookbell.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,7 +11,9 @@ public class PaginationService {
 
     private static final int BAR_LENGTH = 5;
 
-    public List<Integer> getPagenationBarNumbers(int currentPageNumber,int totalPages){
+
+
+    public List<Integer> getPaginationBarNumbers(int currentPageNumber,int totalPages){
         int startNumber = Math.max(currentPageNumber - (BAR_LENGTH /2),0);
         int endNumber = Math.min(startNumber + BAR_LENGTH, totalPages);
         return IntStream.range(startNumber,endNumber).boxed().toList();

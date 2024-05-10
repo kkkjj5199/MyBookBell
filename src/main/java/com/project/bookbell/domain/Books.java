@@ -2,6 +2,7 @@ package com.project.bookbell.domain;
 
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -27,7 +28,6 @@ public class Books extends BaseEntity{
     private Long id;
 
 
-    @Setter
     @Column(nullable = false)
     private String title;
 
@@ -51,11 +51,12 @@ public class Books extends BaseEntity{
 
 
 
-    protected Books(){
+    protected Books(String title, String author, String isbn, String status, Library library){
 
     }
 
-    private Books(String title, String author, String company, Long pages, LocalDate published_date, String ISBN, String status) {
+    @Builder
+    public Books(String title, String author, String company, Long pages, LocalDate published_date, String ISBN, String status, Library library) {
         this.title = title;
         this.author = author;
         this.company = company;
@@ -63,11 +64,18 @@ public class Books extends BaseEntity{
         this.published_date = published_date;
         this.ISBN = ISBN;
         this.status = status;
+        this.library = library;
 
     }
 
-    public static Books of(String title, String author, String company, Long pages, LocalDate published_date, String ISBN, String status) {
-        return new Books(title,author,company,pages,published_date,ISBN,status);
+    public Books() {
+
+    }
+
+
+    public static Books of(String title, String author, String isbn, String status, Library library) {
+        return new Books(title,author,isbn,status,library);
+
     }
 
 
@@ -82,4 +90,6 @@ public class Books extends BaseEntity{
     public int hashCode() {
         return Objects.hash(id);
     }
+
+
 }

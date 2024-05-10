@@ -8,7 +8,11 @@ public class MainController {
 
 
     @GetMapping("/")
-    public String root() {
+    public String mainP() {
+
         return "redirect:/books";
     }
+
+
+
 }

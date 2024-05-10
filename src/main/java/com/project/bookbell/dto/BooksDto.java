@@ -1,22 +1,30 @@
 package com.project.bookbell.dto;
 
 import com.project.bookbell.domain.Books;
+import com.project.bookbell.domain.Library;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public record BooksDto ( Long id,
                          String title,
                        String author,
                        String ISBN,
-                       String company,
-                         LocalDateTime create_date
-                      ) implements Serializable {
+                         String status,
+                         Library library
 
 
-    public static  BooksDto of(Long id, String title, String author, String ISBN, String company, LocalDateTime create_date) {
-            return new BooksDto(id,title, author, ISBN,company,create_date);
+                      ) {
+
+
+    public static  BooksDto of(Long id, String title, String author, String ISBN,
+
+                               String status,
+                               Library library) {
+            return new BooksDto(id,title, author, ISBN,status, library);
     }
+
 
 
 
@@ -28,10 +36,13 @@ public record BooksDto ( Long id,
                 entity.getAuthor(),
                 entity.getISBN(),
                 entity.getCompany(),
-                entity.getCreate_date()
+                entity.getLibrary()
         );
     }
 
 
+    public Books toEntity() {
 
+        return Books.of(title,author,ISBN,status,library);
+    }
 }
